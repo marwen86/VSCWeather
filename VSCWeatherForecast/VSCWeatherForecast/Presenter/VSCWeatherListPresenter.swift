@@ -16,11 +16,26 @@ class VSCWeatherListPresenter: NSObject {
         self.view = view
     }
     
-    func loadData() {
+    func loadWeatherForecastData() {
         self.view?.startLoading()
         VSCRequestManager.sharedInstance.loadWeatherMap("paris", "16") {[weak self] (weatherList) in
             self?.view?.finishLoading()
             self?.view?.refreshView(weatherList)
         }
     }
+    
+    func loadCurrentWeatherData() {
+        self.view?.startLoading()
+        VSCRequestManager.sharedInstance.loadCurrentWeather("paris") {[weak self] (currentWeather) in
+            print(currentWeather)
+            self?.view?.refreshView(currentWeather)
+        }
+    }
+    
+    func loadWeatherData()  {
+        loadWeatherForecastData()
+        loadCurrentWeatherData()
+    }
+    
+    
 }

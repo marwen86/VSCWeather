@@ -10,6 +10,7 @@ import UIKit
 protocol WeatherLisProtocol : class {
     
     func refreshView(_ resultList: [VSCWeatherItem])
+    func refreshView(_ currentWeather: VSCCurrentWeather) 
     func startLoading()
     func finishLoading()
 }
@@ -19,6 +20,7 @@ class VSCWeatherListViewController: UIViewController, UITableViewDelegate, UITab
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView?
     
     var weatherList : [VSCWeatherItem]?
+    var currentWeather : VSCCurrentWeather?
     var refreshControl: UIRefreshControl!
     var presenter : VSCWeatherListPresenter!
     
@@ -30,11 +32,18 @@ class VSCWeatherListViewController: UIViewController, UITableViewDelegate, UITab
         
         refreshControl = UIRefreshControl()
         refreshControl.attributedTitle = NSAttributedString(string: "")
-        refreshControl.addTarget(self.presenter, action: #selector(VSCWeatherListPresenter.loadData), for: UIControlEvents.valueChanged)
+        refreshControl.addTarget(self.presenter, action: #selector(VSCWeatherListPresenter.loadWeatherData), for: UIControlEvents.valueChanged)
         activityIndicator?.hidesWhenStopped = true
-        self.tableView.addSubview(refreshControl) // not required when using UITableViewController
+        self.tableView.addSubview(refreshControl)
         
-        self.presenter.loadData()
+        tableView.showsHorizontalScrollIndicator = false
+        tableView.showsVerticalScrollIndicator = false
+        tableView.rowHeight = UITableViewAutomaticDimension
+        tableView.estimatedRowHeight = 255
+        self.tableView.delegate = self
+        self.tableView.dataSource = self
+        self.presenter.loadWeatherData()
+
     }
     
     override func didReceiveMemoryWarning() {
@@ -45,27 +54,49 @@ class VSCWeatherListViewController: UIViewController, UITableViewDelegate, UITab
 
 extension VSCWeatherListViewController {
     
+    func numberOfSections(in tableView: UITableView) -> Int {
+
+        return 2
+    }
+
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        guard let weatherList = weatherList else {
-            return 0
+        switch section {
+        case 0:
+            guard let _ = currentWeather else {
+                return 0
+            }
+            return 1
+        default:
+            guard let weatherList = weatherList else {
+                return 0
+            }
+            return weatherList.count
         }
-        return weatherList.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "VSCWeatherTableViewCell") as! VSCWeatherTableViewCell
-        cell.weatherItem = weatherList?[indexPath.row]
-        return cell
-    }
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
+        switch indexPath.section {
+        case 0:
+            let cell = tableView.dequeueReusableCell(withIdentifier: "VSCCurrentWeatherTableViewCell") as! VSCCurrentWeatherTableViewCell
+           cell.weatherItem = self.currentWeather
+            return cell
+        default:
+            let cell = tableView.dequeueReusableCell(withIdentifier: "VSCWeatherTableViewCell") as! VSCWeatherTableViewCell
+            cell.weatherItem = weatherList?[indexPath.row]
+            return cell
+        }
     }
 }
 
 extension VSCWeatherListViewController {
     func refreshView(_ resultList: [VSCWeatherItem]) {
         self.weatherList = resultList
+        tableView.reloadData()
+        refreshControl.endRefreshing()
+    }
+    
+    func refreshView(_ currentWeather: VSCCurrentWeather) {
+        self.currentWeather = currentWeather
         tableView.reloadData()
         refreshControl.endRefreshing()
     }

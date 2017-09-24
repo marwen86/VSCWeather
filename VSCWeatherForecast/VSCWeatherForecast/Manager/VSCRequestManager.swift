@@ -10,9 +10,11 @@ let API_KEY = "b1938b15024d33334163ef66c06849aa"
 let API_BASE_URL = "http://api.openweathermap.org"
 let API_DOWNLOAD_ICON_URL  = "%@/img/w/%@"
 let API_DOWNLAD_WEATHER_URL = "%@/data/2.5/forecast/daily?q=%@&mode=Json&units=metric&cnt=%@&lang=fr&appid=%@"
-let API_DOWNLAOD_WEATHER_DETAIL = "%@/data/2.5/forecast?q=%@,us&mode=json&appid=%@"
+let API_API_DOWNALOD_CURRENT_WEATHER = "%@/data/2.5/weather?q=%@&mode=Json&units=metric&lang=fr&appid=%@"
+
 
 public typealias weatherListDownloadSuccess  = (_ weatherlist : [VSCWeatherItem]) -> ()
+public typealias currentweatherDownloadSuccess  = (_ weatherlist : VSCCurrentWeather) -> ()
 public typealias weatherIconDownloadSuccess  = (_ weatherIcon : UIImage) -> ()
 
 import UIKit
@@ -29,7 +31,7 @@ class VSCRequestManager: NSObject {
             
             if let json = response.result.value {
                 
-                let weatherItemList = VSCRequestManager.sharedInstance.parseJSONWeatherMapResponse(response: json)
+                let weatherItemList = VSCRequestManager.sharedInstance.parseJSONForecastWeatherResponse(response: json)
                 if let succes = succes {
                     succes(weatherItemList)
                 }
@@ -49,14 +51,14 @@ class VSCRequestManager: NSObject {
         }
     }
     
-    func loadWeatherDetail(_ cityName: String , success: weatherListDownloadSuccess?) {
+    func loadCurrentWeather(_ cityName: String , success: currentweatherDownloadSuccess?) {
         
-        let requstUrl = String(format: API_DOWNLAOD_WEATHER_DETAIL, arguments: [API_BASE_URL, cityName, API_KEY])
+        let requstUrl = String(format: API_API_DOWNALOD_CURRENT_WEATHER, arguments: [API_BASE_URL, cityName, API_KEY])
         Alamofire.request(requstUrl).responseJSON { response in
             
             if let json = response.result.value {
                 
-                let weatherItemList = VSCRequestManager.sharedInstance.parseJSONWeatherMapResponse(response: json)
+                let weatherItemList = VSCRequestManager.sharedInstance.parseJSONCurrentWeatherResponse(response: json)
                 if let success = success {
                     success(weatherItemList)
                 }
@@ -64,7 +66,17 @@ class VSCRequestManager: NSObject {
         }
     }
     
-    func parseJSONWeatherMapResponse(response: Any?)-> [VSCWeatherItem] {
+    
+    
+    func parseJSONCurrentWeatherResponse(response: Any?)-> VSCCurrentWeather {
+        var weatherItem = VSCCurrentWeather()
+        if let response = response as? NSDictionary{
+              weatherItem = VSCCurrentWeather.fromJson(response)
+        }
+        return  weatherItem
+    }
+    
+    func parseJSONForecastWeatherResponse(response: Any?)-> [VSCWeatherItem] {
         var weatherList = [VSCWeatherItem]()
         if let response = response as? NSDictionary , let list = response["list"] as? NSArray {
             for item in list {
