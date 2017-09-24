@@ -1,5 +1,5 @@
 framework module AlamofireImage {
-  umbrella header "AlamofireImage-umbrella.h"
+  umbrella header "AlamofireImage-watchOS-umbrella.h"
 
   export *
   module * { export * }

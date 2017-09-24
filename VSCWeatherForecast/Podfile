@@ -1,4 +1,3 @@
-platform :ios, '9.0'
 use_frameworks!
 
 def mobileCommonPods
@@ -21,4 +20,10 @@ target 'VSCWeather Widget' do
     mobileCommonPods
 end
 
+target 'weatherForecast Watch' do
+    mobileCommonPods
+end
 
+target 'weatherForecast Watch Extension' do
+    mobileCommonPods
+end

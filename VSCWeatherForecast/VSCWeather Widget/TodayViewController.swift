@@ -8,7 +8,6 @@
 
 import UIKit
 import NotificationCenter
-import Alamofire
 
 class TodayViewController: UIViewController, NCWidgetProviding {
     

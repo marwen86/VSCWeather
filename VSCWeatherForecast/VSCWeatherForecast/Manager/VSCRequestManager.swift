@@ -26,7 +26,6 @@ class VSCRequestManager: NSObject {
     static internal let sharedInstance = VSCRequestManager()
     
     func loadWeatherMap(_ cityName: String, _ nbrOfDate: String, succes: weatherListDownloadSuccess?, error : weatherDownloadError?) {
-
         let requstUrl = String(format: API_DOWNLAD_WEATHER_URL, arguments: [API_BASE_URL, cityName, nbrOfDate, API_KEY])
         Alamofire.request(requstUrl).responseJSON { response in
             
@@ -81,7 +80,6 @@ class VSCRequestManager: NSObject {
     }
     
     func loadCurrentWeather(_ cityName: String , success: currentweatherDownloadSuccess?, error : weatherDownloadError?) {
-        
         let requstUrl = String(format: API_API_DOWNALOD_CURRENT_WEATHER, arguments: [API_BASE_URL, cityName, API_KEY])
         Alamofire.request(requstUrl).responseJSON { response in
         
@@ -109,7 +107,6 @@ class VSCRequestManager: NSObject {
     }
     
     func loadCurrentWeatherOffline(success: currentweatherDownloadSuccess?) {
-        
         if let json = VSCJsonPersistor.getObject(key: JSON_PERSISTOR_CURRENT_WEATHE_KEY) {
             let weatherItemList = VSCJsonParser.parseJSONCurrentWeatherResponse(response: json)
             if let success = success {
@@ -131,7 +128,8 @@ class VSCRequestManager: NSObject {
 
 class Connectivity {
     class func isConnectedToInternet() ->Bool {
-        return NetworkReachabilityManager()!.isReachable
+        //weatherListreturn NetworkReachabilityManager()!.isReachable
+        return true
     }
 }
 
