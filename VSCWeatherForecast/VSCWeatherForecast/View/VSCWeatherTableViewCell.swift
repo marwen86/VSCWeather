@@ -36,7 +36,7 @@ class VSCWeatherTableViewCell: UITableViewCell {
         if let weatherItem = weatherItem {
             if let timeStamp  = weatherItem.timeStamp{
                 let date = Date(timeIntervalSince1970: Double(timeStamp))
-                self.weatherDate.text = date.toString()
+                self.weatherDate.text = date.toString().capitalizingFirstLetter()
             }
             
             if let temp = weatherItem.temp,  let tempDay = temp.tempDay {
@@ -44,7 +44,7 @@ class VSCWeatherTableViewCell: UITableViewCell {
             }
             
             if let weather = weatherItem.weather, let weatherDescription = weather.weatherDescription {
-                self.weatherDescription.text = String(describing: weatherDescription)
+                self.weatherDescription.text = weatherDescription.capitalizingFirstLetter()
             }
             
             if let weather = weatherItem.weather, let weatherIcon = weather.weatherIcon {

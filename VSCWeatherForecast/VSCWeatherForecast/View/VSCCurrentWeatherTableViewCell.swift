@@ -9,12 +9,14 @@
 import UIKit
 
 class VSCCurrentWeatherTableViewCell: UITableViewCell {
+    
+    @IBOutlet weak var weatherIcon: UIImageView?
     @IBOutlet weak var citryName: UILabel!
     @IBOutlet weak var weatherTemperatureMax: UILabel!
     @IBOutlet weak var weatherTemperatureMin: UILabel!
     @IBOutlet weak var weatherTemperature: UILabel!
-    @IBOutlet weak var weatherhumidity: UILabel!
-    @IBOutlet weak var weatherPressur: UILabel!
+    @IBOutlet weak var weatherhumidity: UILabel?
+    @IBOutlet weak var weatherPressur: UILabel?
     @IBOutlet weak var weatherDescription: UILabel!
     
     var weatherItem : VSCCurrentWeather? {
@@ -37,33 +39,37 @@ class VSCCurrentWeatherTableViewCell: UITableViewCell {
     func updateView() {
         if let weatherItem = weatherItem {
             
-            if let humidity  = weatherItem.humidity{
-                self.weatherhumidity.text = String(describing: humidity) + "%"
-
+            if let humidity  = weatherItem.humidity, let weatherhumidity = weatherhumidity {
+                weatherhumidity.text = String(describing: humidity) + "%"
             }
             
             if let tempMax  = weatherItem.tempMax{
                 self.weatherTemperatureMax.text = String(describing: Int(tempMax)) + "°"
-
             }
             
             if let tempMin  = weatherItem.tempMin{
                 self.weatherTemperatureMin.text = String(describing: Int(tempMin)) + "°"
-
             }
             
             if let temp  = weatherItem.temp{
                 self.weatherTemperature.text = String(describing: Int(temp)) + "°"
-
             }
             
-            if let pressure  = weatherItem.pressure{
-                self.weatherPressur.text = String(describing: pressure) + "hPa"
-
+            if let pressure  = weatherItem.pressure, let weatherPressur = weatherPressur{
+                weatherPressur.text = String(describing: pressure) + "hPa"
             }
             
             if let weather = weatherItem.weather, let weatherDescription = weather.weatherDescription {
-                self.weatherDescription.text = String(describing: weatherDescription)
+                self.weatherDescription.text =  weatherDescription.capitalizingFirstLetter()
+            }
+            
+            if let weather = weatherItem.weather, let weatherIconName = weather.weatherIcon, let weatherIcon = weatherIcon {
+                
+                VSCRequestManager.sharedInstance.loadIconWeatherMap(weatherIconName, success: { (icon) in
+                    weatherIcon.image = icon
+                }, error: { (error) in
+                    weatherIcon.image = UIImage(named: "empty_Image")
+                })
             }
         }
     

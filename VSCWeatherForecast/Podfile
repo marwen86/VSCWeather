@@ -16,3 +16,9 @@ end
 target 'VSCWeatherForecastTests' do
      mobileCommonPods
 end
+
+target 'VSCWeather Widget' do
+    mobileCommonPods
+end
+
+
