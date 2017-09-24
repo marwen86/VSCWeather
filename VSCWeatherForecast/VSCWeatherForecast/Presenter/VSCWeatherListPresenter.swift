@@ -17,6 +17,14 @@ class VSCWeatherListPresenter: NSObject {
     }
     
     func loadWeatherForecastData() {
+        guard Connectivity.isConnectedToInternet() else {
+            self.view?.showReachbilityALert()
+            VSCRequestManager.sharedInstance.loadWeatherListOffline(success: { (currentWeather) in
+                self.view?.refreshView(currentWeather)
+            })
+            return
+        }
+        
         self.view?.startLoading()
         VSCRequestManager.sharedInstance.loadWeatherMap("paris", "16", succes: {[weak self] (weatherList) in
             self?.view?.finishLoading()
@@ -27,6 +35,15 @@ class VSCWeatherListPresenter: NSObject {
     }
     
     func loadCurrentWeatherData() {
+        
+        guard Connectivity.isConnectedToInternet() else {
+            self.view?.showReachbilityALert()
+            VSCRequestManager.sharedInstance.loadCurrentWeatherOffline(success: { (currentWeather) in
+                 self.view?.refreshView(currentWeather)
+            })
+            return
+        }
+        
         self.view?.startLoading()
         VSCRequestManager.sharedInstance.loadCurrentWeather("paris", success: { [weak self](currentWeather) in
             self?.view?.refreshView(currentWeather)
@@ -36,12 +53,7 @@ class VSCWeatherListPresenter: NSObject {
     }
     
     func loadWeatherData()  {
-        
-        guard Connectivity.isConnectedToInternet() else {
-            self.view?.showReachbilityALert()
-            return
-        }
-        
+
         loadWeatherForecastData()
         loadCurrentWeatherData()
     }

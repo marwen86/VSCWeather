@@ -39,6 +39,7 @@ class VSCRequestManager: NSObject {
                     return
                 }
                 
+                VSCJsonPersistor.setObject(value: json, key: JSON_PERSISTOR_LIST_WEATHE_KEY)
                 let weatherItemList = VSCJsonParser.parseJSONForecastWeatherResponse(response: json)
                 if let succes = succes {
                     succes(weatherItemList)
@@ -83,10 +84,8 @@ class VSCRequestManager: NSObject {
         
         let requstUrl = String(format: API_API_DOWNALOD_CURRENT_WEATHER, arguments: [API_BASE_URL, cityName, API_KEY])
         Alamofire.request(requstUrl).responseJSON { response in
-            
-            
+        
             if let json = response.result.value {
-                
                 if  let requestError = VSCJsonParser.parseJsonErrorRequest(response: json) {
                     if let error = error {
                         error(requestError)
@@ -94,6 +93,7 @@ class VSCRequestManager: NSObject {
                     return
                 }
                 
+                VSCJsonPersistor.setObject(value: json, key: JSON_PERSISTOR_CURRENT_WEATHE_KEY)
                 let weatherItemList = VSCJsonParser.parseJSONCurrentWeatherResponse(response: json)
                 if let success = success {
                     success(weatherItemList)
@@ -107,6 +107,25 @@ class VSCRequestManager: NSObject {
             }
         }
     }
+    
+    func loadCurrentWeatherOffline(success: currentweatherDownloadSuccess?) {
+        
+        if let json = VSCJsonPersistor.getObject(key: JSON_PERSISTOR_CURRENT_WEATHE_KEY) {
+            let weatherItemList = VSCJsonParser.parseJSONCurrentWeatherResponse(response: json)
+            if let success = success {
+                success(weatherItemList)
+            }
+        }
+    }
+    func loadWeatherListOffline(success: weatherListDownloadSuccess?) {
+        if let json = VSCJsonPersistor.getObject(key: JSON_PERSISTOR_LIST_WEATHE_KEY) {
+            let weatherItemList = VSCJsonParser.parseJSONForecastWeatherResponse(response: json)
+            if let succes = success {
+                succes(weatherItemList)
+            }
+        }
+    }
+
 }
 
 

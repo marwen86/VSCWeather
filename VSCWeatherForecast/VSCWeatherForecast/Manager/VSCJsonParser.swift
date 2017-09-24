@@ -6,7 +6,11 @@
 //  Copyright © 2017 Mohamed Marouane YOUSSEF. All rights reserved.
 //
 
+
 import UIKit
+
+let JSON_PERSISTOR_LIST_WEATHE_KEY = "listWeatherForecast"
+let JSON_PERSISTOR_CURRENT_WEATHE_KEY = "currentWeather"
 
 class VSCJsonParser: NSObject {
 
