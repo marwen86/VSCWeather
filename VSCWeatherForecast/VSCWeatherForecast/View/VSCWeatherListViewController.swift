@@ -13,6 +13,8 @@ protocol WeatherLisProtocol : class {
     func refreshView(_ currentWeather: VSCCurrentWeather) 
     func startLoading()
     func finishLoading()
+    func showReachbilityALert()
+    func showDownlaodErrorAlert(error : Error)
 }
 class VSCWeatherListViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, WeatherLisProtocol{
     
@@ -107,6 +109,18 @@ extension VSCWeatherListViewController {
     
     func finishLoading() {
         activityIndicator?.stopAnimating()
+    }
+    
+    func showReachbilityALert() {
+        refreshControl.endRefreshing()
+        activityIndicator?.stopAnimating()
+        self.reachbilityALert()
+    }
+    
+    func showDownlaodErrorAlert(error : Error) {
+        refreshControl.endRefreshing()
+        activityIndicator?.stopAnimating()
+        self.requestAlertError(error: error)
     }
 }
 

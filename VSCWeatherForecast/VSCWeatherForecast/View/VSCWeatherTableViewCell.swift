@@ -48,9 +48,12 @@ class VSCWeatherTableViewCell: UITableViewCell {
             }
             
             if let weather = weatherItem.weather, let weatherIcon = weather.weatherIcon {
-              VSCRequestManager.sharedInstance.loadIconWeatherMap(weatherIcon, success: { (icon) in
-                self.weatherIcon.image = icon
-              })
+          
+                VSCRequestManager.sharedInstance.loadIconWeatherMap(weatherIcon, success: { (icon) in
+                    self.weatherIcon.image = icon
+                }, error: { (error) in
+                    self.weatherIcon.image = UIImage(named: "empty_Image")
+                })
             }
         }
     }

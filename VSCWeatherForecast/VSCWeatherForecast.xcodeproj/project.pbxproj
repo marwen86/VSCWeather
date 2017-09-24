@@ -30,6 +30,8 @@
 		F5F92EE61F77F5E600DDD465 /* VSCCurrentWeather.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5F92EE51F77F5E600DDD465 /* VSCCurrentWeather.swift */; };
 		F5F92EE81F77F66700DDD465 /* VSCCurrentWeather+FromJson.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5F92EE71F77F66700DDD465 /* VSCCurrentWeather+FromJson.swift */; };
 		F5F92EEA1F77F9AB00DDD465 /* VSCCurrentWeatherTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5F92EE91F77F9AB00DDD465 /* VSCCurrentWeatherTableViewCell.swift */; };
+		F5F92EEC1F78142600DDD465 /* UIViewController+Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5F92EEB1F78142600DDD465 /* UIViewController+Alert.swift */; };
+		F5F92EF01F782A8E00DDD465 /* VSCJsonParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5F92EEF1F782A8E00DDD465 /* VSCJsonParser.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -74,6 +76,8 @@
 		F5F92EE51F77F5E600DDD465 /* VSCCurrentWeather.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VSCCurrentWeather.swift; sourceTree = "<group>"; };
 		F5F92EE71F77F66700DDD465 /* VSCCurrentWeather+FromJson.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "VSCCurrentWeather+FromJson.swift"; sourceTree = "<group>"; };
 		F5F92EE91F77F9AB00DDD465 /* VSCCurrentWeatherTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VSCCurrentWeatherTableViewCell.swift; sourceTree = "<group>"; };
+		F5F92EEB1F78142600DDD465 /* UIViewController+Alert.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+Alert.swift"; sourceTree = "<group>"; };
+		F5F92EEF1F782A8E00DDD465 /* VSCJsonParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VSCJsonParser.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -183,6 +187,7 @@
 				F5F92EE71F77F66700DDD465 /* VSCCurrentWeather+FromJson.swift */,
 				F5F92ED11F77AD2D00DDD465 /* VSCWeathertemp+FromJSON.swift */,
 				F5F92ED21F77AD2D00DDD465 /* VSCWeatherTemp.swift */,
+				F5F92EEF1F782A8E00DDD465 /* VSCJsonParser.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -199,6 +204,7 @@
 			isa = PBXGroup;
 			children = (
 				F5F92ED61F77AD2D00DDD465 /* Date+Formatter.swift */,
+				F5F92EEB1F78142600DDD465 /* UIViewController+Alert.swift */,
 			);
 			path = Utilis;
 			sourceTree = "<group>";
@@ -419,6 +425,7 @@
 				F5F92EEA1F77F9AB00DDD465 /* VSCCurrentWeatherTableViewCell.swift in Sources */,
 				F5F92EE31F77AD2D00DDD465 /* VSCWeatherListViewController.swift in Sources */,
 				F5F92EE01F77AD2D00DDD465 /* VSCWeatherTemp.swift in Sources */,
+				F5F92EEC1F78142600DDD465 /* UIViewController+Alert.swift in Sources */,
 				F5F92EE21F77AD2D00DDD465 /* Date+Formatter.swift in Sources */,
 				F5F92EDB1F77AD2D00DDD465 /* VSCWeatherDescription+FromJSON.swift in Sources */,
 				F5F92EE81F77F66700DDD465 /* VSCCurrentWeather+FromJson.swift in Sources */,
@@ -429,6 +436,7 @@
 				F5F92EDF1F77AD2D00DDD465 /* VSCWeathertemp+FromJSON.swift in Sources */,
 				F5F92EDC1F77AD2D00DDD465 /* VSCWeatherDescription.swift in Sources */,
 				F5F92EE11F77AD2D00DDD465 /* VSCWeatherListPresenter.swift in Sources */,
+				F5F92EF01F782A8E00DDD465 /* VSCJsonParser.swift in Sources */,
 				F5F92EA91F77AC7500DDD465 /* AppDelegate.swift in Sources */,
 				F5F92EDD1F77AD2D00DDD465 /* VSCWeatherItem.swift in Sources */,
 				F5F92EDA1F77AD2D00DDD465 /* VSCRequestManager.swift in Sources */,
