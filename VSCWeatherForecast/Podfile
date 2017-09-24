@@ -1,0 +1,18 @@
+platform :ios, '9.0'
+use_frameworks!
+
+def mobileCommonPods
+ 
+
+ pod 'Alamofire', '~> 4.4'
+ pod 'AlamofireImage'
+
+end
+
+target 'VSCWeatherForecast' do
+     mobileCommonPods
+end
+
+target 'VSCWeatherForecastTests' do
+     mobileCommonPods
+end
