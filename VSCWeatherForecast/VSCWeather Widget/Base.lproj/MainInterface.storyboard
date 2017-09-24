@@ -31,16 +31,16 @@
                                         </constraints>
                                     </imageView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="8se-oB-bFg">
-                                        <rect key="frame" x="99" y="5" width="205" height="66.5"/>
+                                        <rect key="frame" x="99" y="5" width="135" height="66.5"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Paris" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fPc-fP-8NC">
-                                                <rect key="frame" x="0.0" y="0.0" width="205" height="36"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="135" height="36"/>
                                                 <fontDescription key="fontDescription" type="system" weight="light" pointSize="30"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Information non disponible " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Toa-2z-MTx">
-                                                <rect key="frame" x="0.0" y="46" width="205" height="20.5"/>
+                                                <rect key="frame" x="0.0" y="46" width="135" height="20.5"/>
                                                 <fontDescription key="fontDescription" type="system" weight="ultraLight" pointSize="17"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <nil key="highlightedColor"/>
@@ -85,6 +85,7 @@
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
+                                    <constraint firstItem="A6E-ag-FwJ" firstAttribute="leading" secondItem="8se-oB-bFg" secondAttribute="trailing" constant="5" id="1y7-Ze-vLI"/>
                                     <constraint firstItem="c1o-LJ-IWa" firstAttribute="leading" secondItem="kJf-Ti-1Uq" secondAttribute="leading" constant="5" id="4D0-w8-mew"/>
                                     <constraint firstItem="Pxf-zz-a8r" firstAttribute="top" secondItem="A6E-ag-FwJ" secondAttribute="bottom" constant="5" id="HIg-qq-1Am"/>
                                     <constraint firstAttribute="trailing" secondItem="A6E-ag-FwJ" secondAttribute="trailing" constant="20" id="Jln-b7-flZ"/>
