@@ -32,11 +32,7 @@ class VSCweatherRow: NSObject {
             
             let weather = weatherItem.weather
             let iconName = weather.weatherIcon
-            VSCRequestManager.sharedInstance.loadIconWeatherMap(iconName, success: { (icon) in
-                self.weatherIcon.setImage(icon)
-            }, error: { (error) in
-                
-            })
+            self.weatherIcon.setImage(UIImage(named: iconName))
         }
         
     }

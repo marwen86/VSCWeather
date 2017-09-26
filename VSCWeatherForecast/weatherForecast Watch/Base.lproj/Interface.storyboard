@@ -22,16 +22,21 @@
                                 <tableRow identifier="VSCweatherRow" id="Rma-vg-gty" customClass="VSCweatherRow" customModule="weatherForecast_Watch_Extension">
                                     <group key="rootItem" width="1" height="44" alignment="left" id="k5g-rF-mlD">
                                         <items>
-                                            <imageView width="45" alignment="left" contentMode="scaleAspectFit" id="hQF-Ml-qd3"/>
+                                            <imageView width="45" height="1" alignment="left" image="10n" contentMode="scaleAspectFit" id="hQF-Ml-qd3"/>
                                             <group width="1" alignment="left" layout="vertical" id="bMS-Hz-UH1">
                                                 <items>
-                                                    <label alignment="left" text="Label" id="XJd-Rq-Bi7"/>
+                                                    <label alignment="left" text="Label" id="XJd-Rq-Bi7">
+                                                        <color key="textColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                                        <fontDescription key="font" type="system" weight="ultraLight" pointSize="16"/>
+                                                    </label>
                                                     <label alignment="left" text="Label" id="tYR-CT-FwL">
+                                                        <color key="textColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                                         <fontDescription key="font" type="system" weight="ultraLight" pointSize="16"/>
                                                     </label>
                                                 </items>
                                             </group>
                                         </items>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     </group>
                                     <connections>
                                         <outlet property="weatherDate" destination="XJd-Rq-Bi7" id="AFj-Nh-cHV"/>
