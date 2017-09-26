@@ -13,8 +13,8 @@ extension VSCCurrentWeather {
         
         
         guard let currentWeatherData = weatherData["main"] as? NSDictionary,
+            let cityName = weatherData["name"] as? String,
             let humidity = currentWeatherData["humidity"] as? Double,
-            
             let pressure = currentWeatherData["pressure"] as? Double,
             let temp_max = currentWeatherData["temp_max"] as? Double,
             let temp_min = currentWeatherData["temp_min"] as? Double,
@@ -25,7 +25,7 @@ extension VSCCurrentWeather {
                 
                 return nil
         }
-        return VSCCurrentWeather(humidity: humidity, tempMax: temp_max, tempMin: temp_min, temp: temp, pressure: pressure, weather: WeatherDescription)
+        return VSCCurrentWeather(cityName:cityName, humidity: humidity, tempMax: temp_max, tempMin: temp_min, temp: temp, pressure: pressure, weather: WeatherDescription)
     }
 }
 

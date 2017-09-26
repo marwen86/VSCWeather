@@ -33,7 +33,7 @@
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="8se-oB-bFg">
                                         <rect key="frame" x="99" y="5" width="135" height="66.5"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Paris" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fPc-fP-8NC">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="--" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fPc-fP-8NC">
                                                 <rect key="frame" x="0.0" y="0.0" width="135" height="36"/>
                                                 <fontDescription key="fontDescription" type="system" weight="light" pointSize="30"/>
                                                 <nil key="highlightedColor"/>
@@ -93,6 +93,7 @@
                                     <constraint firstItem="8se-oB-bFg" firstAttribute="top" secondItem="kJf-Ti-1Uq" secondAttribute="top" constant="5" id="p4V-ru-FQ4"/>
                                 </constraints>
                                 <connections>
+                                    <outlet property="cityName" destination="fPc-fP-8NC" id="97r-JC-Jpy"/>
                                     <outlet property="weatherDescription" destination="Toa-2z-MTx" id="0Ud-K7-o6D"/>
                                     <outlet property="weatherIcon" destination="c1o-LJ-IWa" id="F9v-FZ-CQ8"/>
                                     <outlet property="weatherTemperature" destination="A6E-ag-FwJ" id="tJR-55-1H2"/>

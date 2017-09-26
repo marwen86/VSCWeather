@@ -10,7 +10,7 @@ import UIKit
 
 class VSCWeatherTableViewCell: UITableViewCell {
     
-    @IBOutlet weak var weatherIcon: UIImageView!
+    @IBOutlet weak var weatherIconImageView: UIImageView!
     @IBOutlet weak var weatherDate: UILabel!
     @IBOutlet weak var weatherTemperature: UILabel!
     @IBOutlet weak var weatherDescription: UILabel!
@@ -47,10 +47,13 @@ class VSCWeatherTableViewCell: UITableViewCell {
             self.weatherDescription.text = weatherDescription.capitalizingFirstLetter()
         
             let weatherIcon = weather.weatherIcon
-            VSCRequestManager.sharedInstance.loadIconWeatherMap(weatherIcon, success: { (icon) in
-                self.weatherIcon.image = icon
-            }, error: { (error) in
-                self.weatherIcon.image = UIImage(named: "empty_Image")
+            
+            let productImageUrl = VSCRequestManager.generateIconUrlPath(weatherIcon)
+            weatherIconImageView.vsc_setImage(withURL: productImageUrl, imageTransition: .crossDissolve(0.5), completion: {
+                error in
+                if error != nil {
+                    
+                }
             })
         }
     }

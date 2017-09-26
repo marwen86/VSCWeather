@@ -8,14 +8,17 @@
 
 import UIKit
 import NotificationCenter
+import CoreLocation
 
-class TodayViewController: UIViewController, NCWidgetProviding {
+class TodayViewController: UIViewController, NCWidgetProviding , LocationServiceDelegate{
     
     @IBOutlet weak var currentWeatherView: VSCCurrentWeatherTableViewCell!
+    fileprivate var locationService: VSCLocationManager =  VSCLocationManager()
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view from its nib.
-         loadCurrentWeatherData()
+         locationService.delegate = self
+         locationService.requestLocation()
     }
     
     override func didReceiveMemoryWarning() {
@@ -27,12 +30,11 @@ class TodayViewController: UIViewController, NCWidgetProviding {
         completionHandler(NCUpdateResult.newData)
     }
     
-    func loadCurrentWeatherData() {
-        
-        VSCRequestManager.sharedInstance.loadCurrentWeather("paris", success: { [weak self](currentWeather) in
-            self?.currentWeatherView.weatherItem = currentWeather
-        }) {(error) in
-            
+    func locationDidUpdate(_ service: VSCLocationManager, location: CLLocation) {
+        VSCRequestManager.sharedInstance.loadCurrentrWeatherFromLocation(location, success: {[weak self] (currentWeather) in
+             self?.currentWeatherView.weatherItem = currentWeather
+        }) { (error) in
+            //alert error
         }
     }
     

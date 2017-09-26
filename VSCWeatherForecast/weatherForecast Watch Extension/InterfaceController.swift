@@ -8,11 +8,13 @@
 
 import WatchKit
 import Foundation
+import CoreLocation
 
-class InterfaceController: WKInterfaceController {
+class InterfaceController: WKInterfaceController, LocationServiceDelegate{
  
     @IBOutlet weak var tableView: WKInterfaceTable!
     var weatherList : [VSCWeatherItem]?
+    fileprivate var locationService: VSCLocationManager =  VSCLocationManager()
     override func awake(withContext context: Any?) {
         super.awake(withContext: context)
         
@@ -22,7 +24,8 @@ class InterfaceController: WKInterfaceController {
     override func willActivate() {
         // This method is called when watch view controller is about to be visible to user
         super.willActivate()
-        loadWeatherForecastData()
+        locationService.delegate = self
+        locationService.requestLocation()
     }
     
     override func didDeactivate() {
@@ -32,12 +35,6 @@ class InterfaceController: WKInterfaceController {
     
     func loadWeatherForecastData() {
 
-        VSCRequestManager.sharedInstance.loadWeatherMap("paris", "16", succes: {[weak self] (weatherList) in
-            self?.weatherList = weatherList
-            self?.refreshWiew()
-        }) {(error) in
-           
-        }
     }
     
     func refreshWiew() {
@@ -49,6 +46,15 @@ class InterfaceController: WKInterfaceController {
                     row.weatherItem =  weatherList[i]
                 }
             }
+        }
+    }
+    
+    func locationDidUpdate(_ service: VSCLocationManager, location: CLLocation) {
+        VSCRequestManager.sharedInstance.loadForecastWeatherFromLocation(location, success: {[weak self] (weatherList) in
+            self?.weatherList = weatherList
+            self?.refreshWiew()
+        }) { (error) in
+            
         }
     }
 

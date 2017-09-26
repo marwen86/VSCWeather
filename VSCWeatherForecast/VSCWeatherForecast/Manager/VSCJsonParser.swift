@@ -24,20 +24,10 @@ class VSCJsonParser: NSObject {
     
     class func parseJSONForecastWeatherResponse(response: Any?)-> [VSCWeatherItem]? {
        
-        guard let response = response as? NSDictionary , let list = response["list"] as? NSArray else {
+        guard let response = response as? NSDictionary else {
             return nil
         }
-        
-        var weatherList = [VSCWeatherItem]()
-        for item in list {
-            if let item = item as? NSDictionary{
-                guard let weatherItem = VSCWeatherItem.fromJson(item) else {
-                  break
-                }
-                weatherList.append(weatherItem)
-            }
-        }
-        return  weatherList
+         return  VSCWeatherItem.fromJson(response)
     }
     
     class func parseJsonErrorRequest(response: Any?) -> Error? {

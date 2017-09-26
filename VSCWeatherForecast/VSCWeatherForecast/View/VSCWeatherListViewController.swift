@@ -29,7 +29,7 @@ class VSCWeatherListViewController: UIViewController, UITableViewDelegate, UITab
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.title = "Météo Paris"
+        self.title = "Météo"
         self.presenter = VSCWeatherListPresenter(view: self)
         
         refreshControl = UIRefreshControl()
