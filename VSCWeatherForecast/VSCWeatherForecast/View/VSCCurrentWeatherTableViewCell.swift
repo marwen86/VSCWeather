@@ -68,14 +68,13 @@ class VSCCurrentWeatherTableViewCell: UITableViewCell {
             if let weatherIcon = weatherIcon {
                 let weather = weatherItem.weather
                 let weatherIconName = weather.weatherIcon
+                weatherIcon.image = (UIImage(named: weatherIconName))
                 
-                let productImageUrl = VSCRequestManager.generateIconUrlPath(weatherIconName)
-                weatherIcon.vsc_setImage(withURL: productImageUrl, imageTransition: .crossDissolve(0.5), completion: {
-                    error in
-                    if error != nil {
-                        
-                    }
-                })
+//                VSCRequestManager.sharedInstance.loadIconWeatherMap(weatherIconName, success: { (icon) in
+//                    weatherIcon.image = icon
+//                }, error: { (error) in
+//                    weatherIcon.image = UIImage(named: "empty_Image")
+//                })
             }
         }
         
