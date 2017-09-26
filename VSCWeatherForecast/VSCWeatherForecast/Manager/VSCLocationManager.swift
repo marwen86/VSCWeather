@@ -36,7 +36,6 @@ class VSCLocationManager: NSObject {
 extension VSCLocationManager : CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         if let location = locations.first {
-            print("Current location: \(location)")
             delegate?.locationDidUpdate(self, location: location)
         }
     }

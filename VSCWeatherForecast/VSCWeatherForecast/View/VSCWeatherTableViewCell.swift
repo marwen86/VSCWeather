@@ -14,6 +14,8 @@ class VSCWeatherTableViewCell: UITableViewCell {
     @IBOutlet weak var weatherDate: UILabel!
     @IBOutlet weak var weatherTemperature: UILabel!
     @IBOutlet weak var weatherDescription: UILabel!
+    @IBOutlet weak var weatherTemperatureMax: UILabel!
+    @IBOutlet weak var weatherTemperatureMin: UILabel!
     
     var weatherItem : VSCWeatherItem? {
         didSet {
@@ -40,14 +42,19 @@ class VSCWeatherTableViewCell: UITableViewCell {
             
             let temp = weatherItem.temp
             let tempDay = temp.tempDay
-            self.weatherTemperature.text = String(describing: tempDay) + "°"
+            self.weatherTemperature.text = String(describing: Int(tempDay)) + "°"
             
             let weather = weatherItem.weather
             let weatherDescription = weather.weatherDescription
             self.weatherDescription.text = weatherDescription.capitalizingFirstLetter()
         
-            let weatherIcon = weather.weatherIcon
+            let tempMax  = temp.tempMax
+            self.weatherTemperatureMax.text = String(describing: Int(tempMax)) + "°"
             
+            let tempMin  = temp.tempMin
+            self.weatherTemperatureMin.text = String(describing: Int(tempMin)) + "°"
+            
+            let weatherIcon = weather.weatherIcon
             let productImageUrl = VSCRequestManager.generateIconUrlPath(weatherIcon)
             weatherIconImageView.vsc_setImage(withURL: productImageUrl, imageTransition: .crossDissolve(0.5), completion: {
                 error in
