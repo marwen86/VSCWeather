@@ -39,7 +39,7 @@ class VSCCurrentWeatherTableViewCell: UITableViewCell {
     func updateView() {
         if let weatherItem = weatherItem {
             
-           
+            
             cityName.text =  weatherItem.cityName
             
             if let weatherhumidity = weatherhumidity {
@@ -52,7 +52,7 @@ class VSCCurrentWeatherTableViewCell: UITableViewCell {
             
             let tempMin  = weatherItem.tempMin
             self.weatherTemperatureMin.text = String(describing: Int(tempMin)) + "°"
-
+            
             let temp  = weatherItem.temp
             self.weatherTemperature.text = String(describing: Int(temp)) + "°"
             
@@ -69,12 +69,15 @@ class VSCCurrentWeatherTableViewCell: UITableViewCell {
                 let weather = weatherItem.weather
                 let weatherIconName = weather.weatherIcon
                 weatherIcon.image = (UIImage(named: weatherIconName))
-                
-//                VSCRequestManager.sharedInstance.loadIconWeatherMap(weatherIconName, success: { (icon) in
-//                    weatherIcon.image = icon
-//                }, error: { (error) in
-//                    weatherIcon.image = UIImage(named: "empty_Image")
-//                })
+                //set Image downloaded from Internet , otherwise we can use the deault icon provided by weather Api
+                /*            let productImageUrl = VSCRequestManager.generateIconUrlPath(weatherIcon)
+                 weatherIconImageView.vsc_setImage(withURL: productImageUrl, imageTransition: .crossDissolve(0.5), completion: {
+                 error in
+                 if error != nil {
+                 
+                 }
+                 })
+                 */
             }
         }
         
