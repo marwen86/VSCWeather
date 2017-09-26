@@ -14,22 +14,27 @@ let JSON_PERSISTOR_CURRENT_WEATHE_KEY = "currentWeather"
 
 class VSCJsonParser: NSObject {
 
-    class func parseJSONCurrentWeatherResponse(response: Any?)-> VSCCurrentWeather {
-        var weatherItem = VSCCurrentWeather()
-        if let response = response as? NSDictionary{
-            weatherItem = VSCCurrentWeather.fromJson(response)
+    class func parseJSONCurrentWeatherResponse(response: Any?)-> VSCCurrentWeather? {
+        
+        guard let response = response as? NSDictionary else {
+            return nil
         }
-        return  weatherItem
+        return  VSCCurrentWeather.fromJson(response)
     }
     
-    class func parseJSONForecastWeatherResponse(response: Any?)-> [VSCWeatherItem] {
+    class func parseJSONForecastWeatherResponse(response: Any?)-> [VSCWeatherItem]? {
+       
+        guard let response = response as? NSDictionary , let list = response["list"] as? NSArray else {
+            return nil
+        }
+        
         var weatherList = [VSCWeatherItem]()
-        if let response = response as? NSDictionary , let list = response["list"] as? NSArray {
-            for item in list {
-                if let item = item as? NSDictionary{
-                    let weatherItem = VSCWeatherItem.fromJson(item)
-                    weatherList.append(weatherItem)
+        for item in list {
+            if let item = item as? NSDictionary{
+                guard let weatherItem = VSCWeatherItem.fromJson(item) else {
+                  break
                 }
+                weatherList.append(weatherItem)
             }
         }
         return  weatherList

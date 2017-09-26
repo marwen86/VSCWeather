@@ -9,13 +9,13 @@
 import UIKit
 
 public struct  VSCWeatherItem {
-   
-    var timeStamp : Int?
-    var pressure :Double?
-    var humidity : Int?
-    var speed : Double?
-    var deg : Int?
-    var clouds : Int?    
-    var temp : VSCWeatherTemp?
-    var weather : VSCWeatherDescription?
+    
+    var timeStamp : Int
+    var pressure :Double
+    var humidity : Int
+    var speed : Double
+    var deg : Int
+    var clouds : Int
+    var temp : VSCWeatherTemp
+    var weather : VSCWeatherDescription
 }

@@ -9,17 +9,13 @@
 import UIKit
 extension VSCWeatherDescription {
     
-    static func fromJson(_ weatherData : NSDictionary)->VSCWeatherDescription {
-        var weatherDescription = VSCWeatherDescription()
-        if let description = weatherData["description"] as? String {
-            weatherDescription.weatherDescription = description
+    static func fromJson(_ weatherData : NSDictionary)-> VSCWeatherDescription? {
+        
+        guard let description = weatherData["description"] as? String,
+            let icon = weatherData["icon"] as? String,
+            let main = weatherData["main"] as? String else {
+                return nil
         }
-        if let icon = weatherData["icon"] as? String {
-            weatherDescription.weatherIcon = icon
-        }
-        if let main = weatherData["main"] as? String {
-            weatherDescription.weatherMain = main
-        }
-        return weatherDescription
+        return VSCWeatherDescription(weatherMain: main, weatherDescription: description, weatherIcon: icon)
     }
 }

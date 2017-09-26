@@ -10,7 +10,7 @@ import UIKit
 
 public struct VSCWeatherDescription {
     
-    var weatherMain : String?
-    var weatherDescription : String?
-    var weatherIcon : String?
+    var weatherMain : String
+    var weatherDescription : String
+    var weatherIcon : String
 }

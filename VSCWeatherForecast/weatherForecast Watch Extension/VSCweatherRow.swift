@@ -22,23 +22,22 @@ class VSCweatherRow: NSObject {
     
     func updateView() {
         if let weatherItem = weatherItem {
-            if let timeStamp  = weatherItem.timeStamp{
-                let date = Date(timeIntervalSince1970: Double(timeStamp))
-                weatherDate.setText(date.toSimpleDateString())
-            }
+            let timeStamp  = weatherItem.timeStamp
+            let date = Date(timeIntervalSince1970: Double(timeStamp))
+            weatherDate.setText(date.toSimpleDateString())
             
-            if let temp = weatherItem.temp,  let tempDay = temp.tempDay {
-                 weatherTemp.setText(String(describing: Int(tempDay)) + "°")
-            }
+            let temp = weatherItem.temp
+            let tempDay = temp.tempDay
+            weatherTemp.setText(String(describing: Int(tempDay)) + "°")
             
-            if let weather = weatherItem.weather, let iconName = weather.weatherIcon {
+            let weather = weatherItem.weather
+            let iconName = weather.weatherIcon
+            VSCRequestManager.sharedInstance.loadIconWeatherMap(iconName, success: { (icon) in
+                self.weatherIcon.setImage(icon)
+            }, error: { (error) in
                 
-                VSCRequestManager.sharedInstance.loadIconWeatherMap(iconName, success: { (icon) in
-                    self.weatherIcon.setImage(icon)
-                }, error: { (error) in
-                    
-                })
-            }
+            })
         }
+        
     }
 }

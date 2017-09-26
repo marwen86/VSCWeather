@@ -34,27 +34,24 @@ class VSCWeatherTableViewCell: UITableViewCell {
     
     func updateView() {
         if let weatherItem = weatherItem {
-            if let timeStamp  = weatherItem.timeStamp{
-                let date = Date(timeIntervalSince1970: Double(timeStamp))
-                self.weatherDate.text = date.toString().capitalizingFirstLetter()
-            }
+            let timeStamp  = weatherItem.timeStamp
+            let date = Date(timeIntervalSince1970: Double(timeStamp))
+            self.weatherDate.text = date.toString().capitalizingFirstLetter()
             
-            if let temp = weatherItem.temp,  let tempDay = temp.tempDay {
-                self.weatherTemperature.text = String(describing: tempDay) + "°"
-            }
+            let temp = weatherItem.temp
+            let tempDay = temp.tempDay
+            self.weatherTemperature.text = String(describing: tempDay) + "°"
             
-            if let weather = weatherItem.weather, let weatherDescription = weather.weatherDescription {
-                self.weatherDescription.text = weatherDescription.capitalizingFirstLetter()
-            }
-            
-            if let weather = weatherItem.weather, let weatherIcon = weather.weatherIcon {
-          
-                VSCRequestManager.sharedInstance.loadIconWeatherMap(weatherIcon, success: { (icon) in
-                    self.weatherIcon.image = icon
-                }, error: { (error) in
-                    self.weatherIcon.image = UIImage(named: "empty_Image")
-                })
-            }
+            let weather = weatherItem.weather
+            let weatherDescription = weather.weatherDescription
+            self.weatherDescription.text = weatherDescription.capitalizingFirstLetter()
+        
+            let weatherIcon = weather.weatherIcon
+            VSCRequestManager.sharedInstance.loadIconWeatherMap(weatherIcon, success: { (icon) in
+                self.weatherIcon.image = icon
+            }, error: { (error) in
+                self.weatherIcon.image = UIImage(named: "empty_Image")
+            })
         }
     }
 }

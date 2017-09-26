@@ -39,32 +39,32 @@ class VSCCurrentWeatherTableViewCell: UITableViewCell {
     func updateView() {
         if let weatherItem = weatherItem {
             
-            if let humidity  = weatherItem.humidity, let weatherhumidity = weatherhumidity {
+            if let weatherhumidity = weatherhumidity {
+                let humidity  = weatherItem.humidity
                 weatherhumidity.text = String(describing: humidity) + "%"
             }
             
-            if let tempMax  = weatherItem.tempMax{
-                self.weatherTemperatureMax.text = String(describing: Int(tempMax)) + "°"
-            }
+            let tempMax  = weatherItem.tempMax
+            self.weatherTemperatureMax.text = String(describing: Int(tempMax)) + "°"
             
-            if let tempMin  = weatherItem.tempMin{
-                self.weatherTemperatureMin.text = String(describing: Int(tempMin)) + "°"
-            }
+            let tempMin  = weatherItem.tempMin
+            self.weatherTemperatureMin.text = String(describing: Int(tempMin)) + "°"
+
+            let temp  = weatherItem.temp
+            self.weatherTemperature.text = String(describing: Int(temp)) + "°"
             
-            if let temp  = weatherItem.temp{
-                self.weatherTemperature.text = String(describing: Int(temp)) + "°"
-            }
-            
-            if let pressure  = weatherItem.pressure, let weatherPressur = weatherPressur{
+            if let weatherPressur = weatherPressur {
+                let pressure  = weatherItem.pressure
                 weatherPressur.text = String(describing: pressure) + "hPa"
             }
             
-            if let weather = weatherItem.weather, let weatherDescription = weather.weatherDescription {
-                self.weatherDescription.text =  weatherDescription.capitalizingFirstLetter()
-            }
+            let weather = weatherItem.weather
+            let weatherDescription = weather.weatherDescription
+            self.weatherDescription.text =  weatherDescription.capitalizingFirstLetter()
             
-            if let weather = weatherItem.weather, let weatherIconName = weather.weatherIcon, let weatherIcon = weatherIcon {
-                
+            if let weatherIcon = weatherIcon {
+                let weather = weatherItem.weather
+                let weatherIconName = weather.weatherIcon
                 VSCRequestManager.sharedInstance.loadIconWeatherMap(weatherIconName, success: { (icon) in
                     weatherIcon.image = icon
                 }, error: { (error) in
@@ -72,6 +72,6 @@ class VSCCurrentWeatherTableViewCell: UITableViewCell {
                 })
             }
         }
-    
+        
     }
 }

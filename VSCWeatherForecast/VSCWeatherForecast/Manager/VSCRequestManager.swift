@@ -13,8 +13,8 @@ let API_DOWNLAD_WEATHER_URL = "%@/data/2.5/forecast/daily?q=%@&mode=Json&units=m
 let API_API_DOWNALOD_CURRENT_WEATHER = "%@/data/2.5/weather?q=%@&mode=Json&units=metric&lang=fr&appid=%@"
 
 public typealias weatherDownloadError  = (_ error : Error) -> ()
-public typealias weatherListDownloadSuccess  = (_ weatherlist : [VSCWeatherItem]) -> ()
-public typealias currentweatherDownloadSuccess  = (_ weatherlist : VSCCurrentWeather) -> ()
+public typealias weatherListDownloadSuccess  = (_ weatherlist : [VSCWeatherItem]?) -> ()
+public typealias currentweatherDownloadSuccess  = (_ weatherlist : VSCCurrentWeather?) -> ()
 public typealias weatherIconDownloadSuccess  = (_ weatherIcon : UIImage) -> ()
 
 import UIKit
@@ -29,26 +29,31 @@ class VSCRequestManager: NSObject {
         let requstUrl = String(format: API_DOWNLAD_WEATHER_URL, arguments: [API_BASE_URL, cityName, nbrOfDate, API_KEY])
         Alamofire.request(requstUrl).responseJSON { response in
             
-            if let json = response.result.value {
-                
-                if  let requestError = VSCJsonParser.parseJsonErrorRequest(response: json) {
-                    if let error = error {
-                        error(requestError)
+            switch response.result {
+            case .success :
+                if let json = response.result.value {
+                    
+                    if  let requestError = VSCJsonParser.parseJsonErrorRequest(response: json) {
+                        if let error = error {
+                            error(requestError)
+                        }
+                        return
                     }
-                    return
+                    
+                    VSCJsonPersistor.setObject(value: json, key: JSON_PERSISTOR_LIST_WEATHE_KEY)
+                    let weatherItemList = VSCJsonParser.parseJSONForecastWeatherResponse(response: json)
+                    if let succes = succes {
+                        succes(weatherItemList)
+                    }
                 }
-                
-                VSCJsonPersistor.setObject(value: json, key: JSON_PERSISTOR_LIST_WEATHE_KEY)
-                let weatherItemList = VSCJsonParser.parseJSONForecastWeatherResponse(response: json)
-                if let succes = succes {
-                    succes(weatherItemList)
+                break
+            case .failure:
+                if let json = response.result.error {
+                    if let error = error {
+                        error(json)
+                    }
                 }
-            }
-            
-            if let json = response.result.error {
-                if let error = error {
-                    error(json)
-                }
+                break
             }
         }
     }
@@ -57,24 +62,29 @@ class VSCRequestManager: NSObject {
         let requstUrl = String(format: API_DOWNLOAD_ICON_URL, arguments: [API_BASE_URL, IconId])
         Alamofire.request(requstUrl).responseImage { response in
 
-            if let image = response.result.value {
-                
-                if  let requestError = VSCJsonParser.parseJsonErrorRequest(response: image) {
-                    if let error = error {
-                        error(requestError)
+            switch response.result {
+            case .success :
+                if let image = response.result.value {
+                    
+                    if  let requestError = VSCJsonParser.parseJsonErrorRequest(response: image) {
+                        if let error = error {
+                            error(requestError)
+                        }
+                        return
                     }
-                    return
+                    
+                    if let success  = success {
+                        success(image)
+                    }
                 }
-                
-                if let success  = success {
-                    success(image)
+                break
+            case .failure:
+                if let json = response.result.error {
+                    if let error = error {
+                        error(json)
+                    }
                 }
-            }
-            
-            if let json = response.result.error {
-                if let error = error {
-                    error(json)
-                }
+                break
             }
         }
     }
@@ -83,25 +93,30 @@ class VSCRequestManager: NSObject {
         let requstUrl = String(format: API_API_DOWNALOD_CURRENT_WEATHER, arguments: [API_BASE_URL, cityName, API_KEY])
         Alamofire.request(requstUrl).responseJSON { response in
         
-            if let json = response.result.value {
-                if  let requestError = VSCJsonParser.parseJsonErrorRequest(response: json) {
-                    if let error = error {
-                        error(requestError)
+            switch response.result {
+            case .success :
+                if let json = response.result.value {
+                    if  let requestError = VSCJsonParser.parseJsonErrorRequest(response: json) {
+                        if let error = error {
+                            error(requestError)
+                        }
+                        return
                     }
-                    return
+                    
+                    VSCJsonPersistor.setObject(value: json, key: JSON_PERSISTOR_CURRENT_WEATHE_KEY)
+                    let weatherItemList = VSCJsonParser.parseJSONCurrentWeatherResponse(response: json)
+                    if let success = success {
+                        success(weatherItemList)
+                    }
                 }
-                
-                VSCJsonPersistor.setObject(value: json, key: JSON_PERSISTOR_CURRENT_WEATHE_KEY)
-                let weatherItemList = VSCJsonParser.parseJSONCurrentWeatherResponse(response: json)
-                if let success = success {
-                    success(weatherItemList)
+                break
+            case .failure:
+                if let json = response.result.error {
+                    if let error = error {
+                        error(json)
+                    }
                 }
-            }
-            
-            if let json = response.result.error {
-                if let error = error {
-                    error(json)
-                }
+                break
             }
         }
     }
@@ -127,12 +142,14 @@ class VSCRequestManager: NSObject {
 
 
 class Connectivity {
-    class func isConnectedToInternet() ->Bool {
-        //weatherListreturn NetworkReachabilityManager()!.isReachable
-        return true
+    class func isConnectedToInternet() ->Bool {       
+        #if os(iOS)
+            guard let manager = NetworkReachabilityManager() else{
+                return false
+            }
+            return manager.isReachable
+        #else
+            return true
+        #endif
     }
 }
-
-
-
-

@@ -33,6 +33,10 @@
 		F584CC661F78695C00ED0222 /* VSCWeatherTemp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5F92ED21F77AD2D00DDD465 /* VSCWeatherTemp.swift */; };
 		F584CC681F786ABB00ED0222 /* VSCweatherRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = F584CC671F786ABB00ED0222 /* VSCweatherRow.swift */; };
 		F584CC691F786CCF00ED0222 /* Date+Formatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5F92ED61F77AD2D00DDD465 /* Date+Formatter.swift */; };
+		F584CC6B1F799DC400ED0222 /* sample_response.json in Resources */ = {isa = PBXBuildFile; fileRef = F584CC6A1F799DC400ED0222 /* sample_response.json */; };
+		F584CC6D1F79B18000ED0222 /* VSCApiSessionTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = F584CC6C1F79B18000ED0222 /* VSCApiSessionTest.swift */; };
+		F584CC6F1F79B1B200ED0222 /* VSCJsonParserTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = F584CC6E1F79B1B200ED0222 /* VSCJsonParserTest.swift */; };
+		F584CC711F79B51300ED0222 /* VSCDateExtentionTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = F584CC701F79B51300ED0222 /* VSCDateExtentionTest.swift */; };
 		F5F92EA91F77AC7500DDD465 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5F92EA81F77AC7500DDD465 /* AppDelegate.swift */; };
 		F5F92EAB1F77AC7500DDD465 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5F92EAA1F77AC7500DDD465 /* ViewController.swift */; };
 		F5F92EAE1F77AC7500DDD465 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F5F92EAC1F77AC7500DDD465 /* Main.storyboard */; };
@@ -171,6 +175,10 @@
 		F584CC4E1F7862F500ED0222 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F584CC501F7862F500ED0222 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F584CC671F786ABB00ED0222 /* VSCweatherRow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VSCweatherRow.swift; sourceTree = "<group>"; };
+		F584CC6A1F799DC400ED0222 /* sample_response.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = sample_response.json; sourceTree = SOURCE_ROOT; };
+		F584CC6C1F79B18000ED0222 /* VSCApiSessionTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VSCApiSessionTest.swift; sourceTree = "<group>"; };
+		F584CC6E1F79B1B200ED0222 /* VSCJsonParserTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VSCJsonParserTest.swift; sourceTree = "<group>"; };
+		F584CC701F79B51300ED0222 /* VSCDateExtentionTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VSCDateExtentionTest.swift; sourceTree = "<group>"; };
 		F5F92EA51F77AC7500DDD465 /* VSCWeatherForecast.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VSCWeatherForecast.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F5F92EA81F77AC7500DDD465 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F5F92EAA1F77AC7500DDD465 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -364,6 +372,10 @@
 			isa = PBXGroup;
 			children = (
 				F5F92EBD1F77AC7500DDD465 /* VSCWeatherForecastTests.swift */,
+				F584CC6C1F79B18000ED0222 /* VSCApiSessionTest.swift */,
+				F584CC6E1F79B1B200ED0222 /* VSCJsonParserTest.swift */,
+				F584CC701F79B51300ED0222 /* VSCDateExtentionTest.swift */,
+				F584CC6A1F799DC400ED0222 /* sample_response.json */,
 				F5F92EBF1F77AC7500DDD465 /* Info.plist */,
 			);
 			path = VSCWeatherForecastTests;
@@ -372,8 +384,8 @@
 		F5F92ECA1F77AD2D00DDD465 /* Manager */ = {
 			isa = PBXGroup;
 			children = (
-				F5F92EF41F782C9700DDD465 /* VSCJsonParser.swift */,
 				F5F92ECB1F77AD2D00DDD465 /* VSCRequestManager.swift */,
+				F5F92EF41F782C9700DDD465 /* VSCJsonParser.swift */,
 				F5F92EF21F782C8900DDD465 /* VSCJsonPersistor.swift */,
 			);
 			path = Manager;
@@ -627,6 +639,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F584CC6B1F799DC400ED0222 /* sample_response.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -893,6 +906,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F584CC6D1F79B18000ED0222 /* VSCApiSessionTest.swift in Sources */,
+				F584CC711F79B51300ED0222 /* VSCDateExtentionTest.swift in Sources */,
+				F584CC6F1F79B1B200ED0222 /* VSCJsonParserTest.swift in Sources */,
 				F5F92EBE1F77AC7500DDD465 /* VSCWeatherForecastTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

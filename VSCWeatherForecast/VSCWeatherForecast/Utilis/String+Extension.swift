@@ -14,6 +14,22 @@ extension String {
         return first + other
     }
     
+    func toDate() -> Date? {
+        let formatter = DateFormatter()
+        formatter.locale = Locale(identifier: "FR-fr")
+        formatter.dateFormat = "EEEE d MMMM"
+        let date = formatter.date(from: self)
+        return date
+    }
+    
+    func toSimpleDate() -> Date? {
+        let formatter = DateFormatter()
+        formatter.locale = Locale(identifier: "FR-fr")
+        formatter.dateFormat = "EEEE d"
+        let date = formatter.date(from: self)
+        return date
+    }
+    
     mutating func capitalizeFirstLetter() {
         self = self.capitalizingFirstLetter()
     }

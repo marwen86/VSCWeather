@@ -9,10 +9,10 @@
 import UIKit
 
 public struct VSCWeatherTemp {
-    var tempDay : Double?
-    var tempMin : Double?
-    var tempMax : Double?
-    var tempNight : Double?
-    var tempeEve : Double?
-    var tempMorn : Double?
+    var tempDay : Double
+    var tempMin : Double
+    var tempMax : Double
+    var tempNight : Double
+    var tempeEve : Double
+    var tempMorn : Double
 }

@@ -9,8 +9,8 @@
 import UIKit
 protocol WeatherLisProtocol : class {
     
-    func refreshView(_ resultList: [VSCWeatherItem])
-    func refreshView(_ currentWeather: VSCCurrentWeather) 
+    func refreshView(_ resultList: [VSCWeatherItem]?)
+    func refreshView(_ currentWeather: VSCCurrentWeather?)
     func startLoading()
     func finishLoading()
     func showReachbilityALert()
@@ -91,16 +91,21 @@ extension VSCWeatherListViewController {
 }
 
 extension VSCWeatherListViewController {
-    func refreshView(_ resultList: [VSCWeatherItem]) {
-        self.weatherList = resultList
-        tableView.reloadData()
-        refreshControl.endRefreshing()
+    func refreshView(_ resultList: [VSCWeatherItem]?) {
+        if let resultList = resultList {
+            self.weatherList = resultList
+            tableView.reloadData()
+            refreshControl.endRefreshing()
+        }
+
     }
     
-    func refreshView(_ currentWeather: VSCCurrentWeather) {
-        self.currentWeather = currentWeather
-        tableView.reloadData()
-        refreshControl.endRefreshing()
+    func refreshView(_ currentWeather: VSCCurrentWeather?) {
+        if let currentWeather = currentWeather {
+            self.currentWeather = currentWeather
+            tableView.reloadData()
+            refreshControl.endRefreshing()
+        }
     }
     
     func startLoading() {

@@ -9,10 +9,10 @@
 import UIKit
 
 public struct  VSCCurrentWeather {
-    var humidity : Double?
-    var tempMax :Double?
-    var tempMin : Double?
-    var temp : Double?
-    var pressure : Double?
-    var weather : VSCWeatherDescription?
+    var humidity : Double
+    var tempMax :Double
+    var tempMin : Double
+    var temp : Double
+    var pressure : Double
+    var weather : VSCWeatherDescription
 }

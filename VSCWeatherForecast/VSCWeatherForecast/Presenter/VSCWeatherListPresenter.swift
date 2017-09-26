@@ -9,7 +9,7 @@
 import UIKit
 
 class VSCWeatherListPresenter: NSObject {
-
+    
     weak private var view : WeatherLisProtocol?
     
     init(view : WeatherLisProtocol) {
@@ -39,7 +39,7 @@ class VSCWeatherListPresenter: NSObject {
         guard Connectivity.isConnectedToInternet() else {
             self.view?.showReachbilityALert()
             VSCRequestManager.sharedInstance.loadCurrentWeatherOffline(success: { (currentWeather) in
-                 self.view?.refreshView(currentWeather)
+                self.view?.refreshView(currentWeather)
             })
             return
         }
@@ -53,7 +53,7 @@ class VSCWeatherListPresenter: NSObject {
     }
     
     func loadWeatherData()  {
-
+        
         loadWeatherForecastData()
         loadCurrentWeatherData()
     }
