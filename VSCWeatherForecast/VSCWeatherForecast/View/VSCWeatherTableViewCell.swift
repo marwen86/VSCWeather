@@ -47,7 +47,7 @@ class VSCWeatherTableViewCell: UITableViewCell {
             let weather = weatherItem.weather
             let weatherDescription = weather.weatherDescription
             self.weatherDescription.text = weatherDescription.capitalizingFirstLetter()
-        
+            
             let tempMax  = temp.tempMax
             self.weatherTemperatureMax.text = String(describing: Int(tempMax)) + "°"
             
@@ -55,13 +55,16 @@ class VSCWeatherTableViewCell: UITableViewCell {
             self.weatherTemperatureMin.text = String(describing: Int(tempMin)) + "°"
             
             let weatherIcon = weather.weatherIcon
-            let productImageUrl = VSCRequestManager.generateIconUrlPath(weatherIcon)
-            weatherIconImageView.vsc_setImage(withURL: productImageUrl, imageTransition: .crossDissolve(0.5), completion: {
-                error in
-                if error != nil {
-                    
-                }
-            })
+            weatherIconImageView.image = (UIImage(named: weatherIcon))
+            //set Image downloaded from Internet , otherwise we can use the deault icon provided by weather Api
+            /*            let productImageUrl = VSCRequestManager.generateIconUrlPath(weatherIcon)
+             weatherIconImageView.vsc_setImage(withURL: productImageUrl, imageTransition: .crossDissolve(0.5), completion: {
+             error in
+             if error != nil {
+             
+             }
+             })
+             */
         }
     }
 }
