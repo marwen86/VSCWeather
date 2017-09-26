@@ -9,6 +9,7 @@
 import UIKit
 
 public struct  VSCCurrentWeather {
+    var cityName : String
     var humidity : Double
     var tempMax :Double
     var tempMin : Double

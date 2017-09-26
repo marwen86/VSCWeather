@@ -12,6 +12,11 @@
 		A003DC60227710CDB6DD2AD9 /* Pods_weatherForecast_Watch_Extension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FD743604737B8DD08E1E7D78 /* Pods_weatherForecast_Watch_Extension.framework */; };
 		C8F4D26F647A1E20DAF17245 /* Pods_VSCWeatherForecast.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB8C4093CAC16445ABDB7EAC /* Pods_VSCWeatherForecast.framework */; };
 		EEBCDF1571B30802F502B788 /* Pods_weatherForecast_Watch.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AD41CA97D2FE47BDDB544C57 /* Pods_weatherForecast_Watch.framework */; };
+		F5322B2C1F7ACD3700A6D9CC /* VSCLocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F584CC721F7A3CF500ED0222 /* VSCLocationManager.swift */; };
+		F5322B2D1F7ACD3800A6D9CC /* VSCLocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F584CC721F7A3CF500ED0222 /* VSCLocationManager.swift */; };
+		F5322B2E1F7ACD3900A6D9CC /* VSCLocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F584CC721F7A3CF500ED0222 /* VSCLocationManager.swift */; };
+		F5322B301F7AD51D00A6D9CC /* UIImageView+Alamofire.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5322B2F1F7AD51D00A6D9CC /* UIImageView+Alamofire.swift */; };
+		F5322B311F7AD69700A6D9CC /* UIImageView+Alamofire.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5322B2F1F7AD51D00A6D9CC /* UIImageView+Alamofire.swift */; };
 		F584CC391F7862F500ED0222 /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F584CC371F7862F500ED0222 /* Interface.storyboard */; };
 		F584CC3B1F7862F500ED0222 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F584CC3A1F7862F500ED0222 /* Assets.xcassets */; };
 		F584CC421F7862F500ED0222 /* weatherForecast Watch Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = F584CC411F7862F500ED0222 /* weatherForecast Watch Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
@@ -37,6 +42,7 @@
 		F584CC6D1F79B18000ED0222 /* VSCApiSessionTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = F584CC6C1F79B18000ED0222 /* VSCApiSessionTest.swift */; };
 		F584CC6F1F79B1B200ED0222 /* VSCJsonParserTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = F584CC6E1F79B1B200ED0222 /* VSCJsonParserTest.swift */; };
 		F584CC711F79B51300ED0222 /* VSCDateExtentionTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = F584CC701F79B51300ED0222 /* VSCDateExtentionTest.swift */; };
+		F584CC731F7A3CF500ED0222 /* VSCLocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F584CC721F7A3CF500ED0222 /* VSCLocationManager.swift */; };
 		F5F92EA91F77AC7500DDD465 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5F92EA81F77AC7500DDD465 /* AppDelegate.swift */; };
 		F5F92EAB1F77AC7500DDD465 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5F92EAA1F77AC7500DDD465 /* ViewController.swift */; };
 		F5F92EAE1F77AC7500DDD465 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F5F92EAC1F77AC7500DDD465 /* Main.storyboard */; };
@@ -163,6 +169,7 @@
 		BDB302895574B79A14419403 /* Pods-VSCWeatherForecast.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VSCWeatherForecast.release.xcconfig"; path = "Pods/Target Support Files/Pods-VSCWeatherForecast/Pods-VSCWeatherForecast.release.xcconfig"; sourceTree = "<group>"; };
 		DB8C4093CAC16445ABDB7EAC /* Pods_VSCWeatherForecast.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_VSCWeatherForecast.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DDB783C24C8D9669203C019F /* Pods-VSCWeatherForecastTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VSCWeatherForecastTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-VSCWeatherForecastTests/Pods-VSCWeatherForecastTests.release.xcconfig"; sourceTree = "<group>"; };
+		F5322B2F1F7AD51D00A6D9CC /* UIImageView+Alamofire.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImageView+Alamofire.swift"; sourceTree = "<group>"; };
 		F584CC351F7862F500ED0222 /* weatherForecast Watch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "weatherForecast Watch.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F584CC381F7862F500ED0222 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Interface.storyboard; sourceTree = "<group>"; };
 		F584CC3A1F7862F500ED0222 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -179,6 +186,7 @@
 		F584CC6C1F79B18000ED0222 /* VSCApiSessionTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VSCApiSessionTest.swift; sourceTree = "<group>"; };
 		F584CC6E1F79B1B200ED0222 /* VSCJsonParserTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VSCJsonParserTest.swift; sourceTree = "<group>"; };
 		F584CC701F79B51300ED0222 /* VSCDateExtentionTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VSCDateExtentionTest.swift; sourceTree = "<group>"; };
+		F584CC721F7A3CF500ED0222 /* VSCLocationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VSCLocationManager.swift; sourceTree = "<group>"; };
 		F5F92EA51F77AC7500DDD465 /* VSCWeatherForecast.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VSCWeatherForecast.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F5F92EA81F77AC7500DDD465 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F5F92EAA1F77AC7500DDD465 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -385,6 +393,7 @@
 			isa = PBXGroup;
 			children = (
 				F5F92ECB1F77AD2D00DDD465 /* VSCRequestManager.swift */,
+				F584CC721F7A3CF500ED0222 /* VSCLocationManager.swift */,
 				F5F92EF41F782C9700DDD465 /* VSCJsonParser.swift */,
 				F5F92EF21F782C8900DDD465 /* VSCJsonPersistor.swift */,
 			);
@@ -420,6 +429,7 @@
 				F5F92ED61F77AD2D00DDD465 /* Date+Formatter.swift */,
 				F5F92EEB1F78142600DDD465 /* UIViewController+Alert.swift */,
 				F5F92F171F785EAA00DDD465 /* String+Extension.swift */,
+				F5322B2F1F7AD51D00A6D9CC /* UIImageView+Alamofire.swift */,
 			);
 			path = Utilis;
 			sourceTree = "<group>";
@@ -866,6 +876,7 @@
 				F584CC4B1F7862F500ED0222 /* ExtensionDelegate.swift in Sources */,
 				F584CC5F1F78695C00ED0222 /* VSCWeatherDescription+FromJSON.swift in Sources */,
 				F584CC611F78695C00ED0222 /* VSCCurrentWeather.swift in Sources */,
+				F5322B2C1F7ACD3700A6D9CC /* VSCLocationManager.swift in Sources */,
 				F584CC661F78695C00ED0222 /* VSCWeatherTemp.swift in Sources */,
 				F584CC491F7862F500ED0222 /* InterfaceController.swift in Sources */,
 				F584CC691F786CCF00ED0222 /* Date+Formatter.swift in Sources */,
@@ -880,10 +891,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				F5F92EEA1F77F9AB00DDD465 /* VSCCurrentWeatherTableViewCell.swift in Sources */,
+				F5322B301F7AD51D00A6D9CC /* UIImageView+Alamofire.swift in Sources */,
 				F5F92EE31F77AD2D00DDD465 /* VSCWeatherListViewController.swift in Sources */,
 				F5F92EF31F782C8900DDD465 /* VSCJsonPersistor.swift in Sources */,
 				F5F92EE01F77AD2D00DDD465 /* VSCWeatherTemp.swift in Sources */,
 				F5F92EEC1F78142600DDD465 /* UIViewController+Alert.swift in Sources */,
+				F584CC731F7A3CF500ED0222 /* VSCLocationManager.swift in Sources */,
 				F5F92EF51F782C9800DDD465 /* VSCJsonParser.swift in Sources */,
 				F5F92EE21F77AD2D00DDD465 /* Date+Formatter.swift in Sources */,
 				F5F92EDB1F77AD2D00DDD465 /* VSCWeatherDescription+FromJSON.swift in Sources */,
@@ -907,6 +920,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F584CC6D1F79B18000ED0222 /* VSCApiSessionTest.swift in Sources */,
+				F5322B2E1F7ACD3900A6D9CC /* VSCLocationManager.swift in Sources */,
 				F584CC711F79B51300ED0222 /* VSCDateExtentionTest.swift in Sources */,
 				F584CC6F1F79B1B200ED0222 /* VSCJsonParserTest.swift in Sources */,
 				F5F92EBE1F77AC7500DDD465 /* VSCWeatherForecastTests.swift in Sources */,
@@ -928,7 +942,9 @@
 				F5F92F191F785ECE00DDD465 /* String+Extension.swift in Sources */,
 				F5F92F0E1F78563D00DDD465 /* VSCWeatherDescription+FromJSON.swift in Sources */,
 				F5F92F0B1F78561000DDD465 /* VSCRequestManager.swift in Sources */,
+				F5322B2D1F7ACD3800A6D9CC /* VSCLocationManager.swift in Sources */,
 				F5F92F151F78563D00DDD465 /* VSCWeatherTemp.swift in Sources */,
+				F5322B311F7AD69700A6D9CC /* UIImageView+Alamofire.swift in Sources */,
 				F5F92F101F78563D00DDD465 /* VSCCurrentWeather.swift in Sources */,
 				F5F92EFF1F7852E600DDD465 /* TodayViewController.swift in Sources */,
 			);
@@ -1167,6 +1183,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = VSCWeatherForecast/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = VSC.VSCWeatherForecast;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1181,6 +1198,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = VSCWeatherForecast/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = VSC.VSCWeatherForecast;
 				PRODUCT_NAME = "$(TARGET_NAME)";

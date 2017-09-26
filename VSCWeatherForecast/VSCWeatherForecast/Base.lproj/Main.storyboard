@@ -179,7 +179,7 @@
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <connections>
-                                            <outlet property="citryName" destination="ApR-sF-IZM" id="GfK-tk-jKO"/>
+                                            <outlet property="cityName" destination="ApR-sF-IZM" id="CZm-Vl-LBP"/>
                                             <outlet property="weatherDescription" destination="rm6-kx-nni" id="BX5-0h-ubt"/>
                                             <outlet property="weatherPressur" destination="szH-YJ-PQf" id="zpJ-qV-PFS"/>
                                             <outlet property="weatherTemperature" destination="fVy-yC-7hj" id="TvN-uI-ugP"/>
@@ -242,7 +242,7 @@
                                         <connections>
                                             <outlet property="weatherDate" destination="YAf-vV-xli" id="Peb-Fi-LJt"/>
                                             <outlet property="weatherDescription" destination="7vA-Yo-cos" id="mgS-Py-Avh"/>
-                                            <outlet property="weatherIcon" destination="hkl-eg-hRa" id="hNf-Za-adA"/>
+                                            <outlet property="weatherIconImageView" destination="hkl-eg-hRa" id="4Y1-hu-bbh"/>
                                             <outlet property="weatherTemperature" destination="tHN-eP-Teg" id="fx4-aQ-TPP"/>
                                         </connections>
                                     </tableViewCell>

@@ -14,7 +14,7 @@
             <objects>
                 <controller id="AgC-eL-Hgc" customClass="InterfaceController" customModule="weatherForecast_Watch" customModuleProvider="target">
                     <items>
-                        <label alignment="left" text="Météo Paris" textAlignment="center" id="ZJ0-hn-Dny">
+                        <label alignment="left" text="Météo VSC" textAlignment="center" id="ZJ0-hn-Dny">
                             <fontDescription key="font" type="boldSystem" pointSize="16"/>
                         </label>
                         <table alignment="left" id="tdT-MU-iW0">

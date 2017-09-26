@@ -7,56 +7,81 @@
 //
 
 import UIKit
+import CoreLocation
 
-class VSCWeatherListPresenter: NSObject {
+class VSCWeatherListPresenter: NSObject , LocationServiceDelegate {
     
     weak private var view : WeatherLisProtocol?
+    fileprivate var locationService: VSCLocationManager
     
     init(view : WeatherLisProtocol) {
         self.view = view
+        locationService = VSCLocationManager()
     }
     
-    func loadWeatherForecastData() {
+    func loadWeatherForecastData(_ location: CLLocation?) {
+
+        guard let location = location else{
+            VSCRequestManager.sharedInstance.loadForecastWeatherOffline(success: { (list) in
+                self.view?.refreshView(list)
+            })
+            return
+        }
+
         guard Connectivity.isConnectedToInternet() else {
             self.view?.showReachbilityALert()
-            VSCRequestManager.sharedInstance.loadWeatherListOffline(success: { (currentWeather) in
-                self.view?.refreshView(currentWeather)
-            })
             return
         }
         
         self.view?.startLoading()
-        VSCRequestManager.sharedInstance.loadWeatherMap("paris", "16", succes: {[weak self] (weatherList) in
+        VSCRequestManager.sharedInstance.loadForecastWeatherFromLocation(location, success: { [weak self] (list) in
             self?.view?.finishLoading()
-            self?.view?.refreshView(weatherList)
+            self?.view?.refreshView(list)
         }) {[weak self] (error) in
+            self?.view?.finishLoading()
             self?.view?.showDownlaodErrorAlert(error: error)
         }
     }
     
-    func loadCurrentWeatherData() {
-        
-        guard Connectivity.isConnectedToInternet() else {
-            self.view?.showReachbilityALert()
+    func loadCurrentWeatherData(_ location: CLLocation?) {
+       
+        guard let location = location else{
             VSCRequestManager.sharedInstance.loadCurrentWeatherOffline(success: { (currentWeather) in
                 self.view?.refreshView(currentWeather)
             })
             return
         }
+
+        guard Connectivity.isConnectedToInternet() else {
+            self.view?.showReachbilityALert()
+            return
+        }
         
         self.view?.startLoading()
-        VSCRequestManager.sharedInstance.loadCurrentWeather("paris", success: { [weak self](currentWeather) in
-            self?.view?.refreshView(currentWeather)
+        VSCRequestManager.sharedInstance.loadCurrentrWeatherFromLocation(location, success: { [weak self] (current) in
+            self?.view?.finishLoading()
+            self?.view?.refreshView(current)
         }) {[weak self] (error) in
+            self?.view?.finishLoading()
             self?.view?.showDownlaodErrorAlert(error: error)
         }
     }
     
     func loadWeatherData()  {
-        
-        loadWeatherForecastData()
-        loadCurrentWeatherData()
+        startLocationService()
+        loadWeatherForecastData(nil)
+        loadCurrentWeatherData(nil)
     }
     
+    func startLocationService() {
+        locationService.delegate = self
+        locationService.requestLocation()
+    }
+    
+    func locationDidUpdate(_ service: VSCLocationManager, location: CLLocation) {
+        loadWeatherForecastData(location)
+        loadCurrentWeatherData(location)
+    }
     
 }
+

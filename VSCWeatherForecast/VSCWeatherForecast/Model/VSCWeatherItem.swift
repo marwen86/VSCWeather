@@ -10,6 +10,7 @@ import UIKit
 
 public struct  VSCWeatherItem {
     
+    var cityName : String
     var timeStamp : Int
     var pressure :Double
     var humidity : Int

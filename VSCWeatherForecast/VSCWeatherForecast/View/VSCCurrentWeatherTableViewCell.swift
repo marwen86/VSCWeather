@@ -11,7 +11,7 @@ import UIKit
 class VSCCurrentWeatherTableViewCell: UITableViewCell {
     
     @IBOutlet weak var weatherIcon: UIImageView?
-    @IBOutlet weak var citryName: UILabel!
+    @IBOutlet weak var cityName: UILabel!
     @IBOutlet weak var weatherTemperatureMax: UILabel!
     @IBOutlet weak var weatherTemperatureMin: UILabel!
     @IBOutlet weak var weatherTemperature: UILabel!
@@ -39,6 +39,9 @@ class VSCCurrentWeatherTableViewCell: UITableViewCell {
     func updateView() {
         if let weatherItem = weatherItem {
             
+           
+            cityName.text =  weatherItem.cityName
+            
             if let weatherhumidity = weatherhumidity {
                 let humidity  = weatherItem.humidity
                 weatherhumidity.text = String(describing: humidity) + "%"
@@ -65,10 +68,13 @@ class VSCCurrentWeatherTableViewCell: UITableViewCell {
             if let weatherIcon = weatherIcon {
                 let weather = weatherItem.weather
                 let weatherIconName = weather.weatherIcon
-                VSCRequestManager.sharedInstance.loadIconWeatherMap(weatherIconName, success: { (icon) in
-                    weatherIcon.image = icon
-                }, error: { (error) in
-                    weatherIcon.image = UIImage(named: "empty_Image")
+                
+                let productImageUrl = VSCRequestManager.generateIconUrlPath(weatherIconName)
+                weatherIcon.vsc_setImage(withURL: productImageUrl, imageTransition: .crossDissolve(0.5), completion: {
+                    error in
+                    if error != nil {
+                        
+                    }
                 })
             }
         }
